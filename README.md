@@ -1,37 +1,36 @@
-# MiniAppClient
-
-#### 介绍
-MiniAppServer对应的小程序代码
-
-#### 软件架构
-软件架构说明
+# 萤火小程序商城（YoShop）
 
 
-#### 安装教程
+#### 项目介绍
+萤火小程序商城，是一款开源的电商系统，为中小企业提供最佳的新零售解决方案。采用稳定的MVC框架开发，执行效率、扩展性、稳定性值得信赖。
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+#### 项目演示
+- 官网地址：[https://www.yiovo.com/](https://www.yiovo.com/)
+- 后台演示：[https://yoshop.xany6.com/](https://yoshop.xany6.com/)
+- QQ交流群：1055189864
 
-#### 使用说明
+![输入图片说明](https://images.gitee.com/uploads/images/2018/0727/210807_271acafd_597459.jpeg "gh_a376934c7da8_344.jpg")
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+#### 项目截图
+![输入图片说明](https://gitee.com/uploads/images/2018/0629/144738_39b279a7_597459.png "前端.png")
 
-#### 参与贡献
+#### 后台截图
+![输入图片说明](https://gitee.com/uploads/images/2018/0629/144835_4e7858ef_597459.png "后台-商品列表.png")
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+![输入图片说明](https://gitee.com/uploads/images/2018/0629/144851_2a4c1e50_597459.png "后台-新增商品.png")
+
+![输入图片说明](https://gitee.com/uploads/images/2018/0629/144952_acc1d20d_597459.png "后台-首页设计.png")
+
+![输入图片说明](https://gitee.com/uploads/images/2018/0629/145004_5a5ba42c_597459.png "后台-配送设置.png")
+
+#### 环境要求
+- Nginx/Apache/IIS
+- PHP5.4+
+- MySQL5.1+
+
+建议使用环境：Linux + Nginx1.14 + PHP7 + MySQL5.6
 
 
-#### 码云特技
+#### 安全&缺陷
+如果你发现了一个安全漏洞，请发送邮件到 developer@yiovo.com。所有的安全漏洞都将及时得到解决。
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5.  码云官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
