@@ -37,7 +37,7 @@ Page({
    */
   getUserDetail() {
     let _this = this;
-    App._get('user.index/detail', {}, result => {
+    App._get('GetUserOrderCount', {}, result => {
       _this.setData(result.data);
     });
   },

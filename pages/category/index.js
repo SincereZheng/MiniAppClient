@@ -48,7 +48,7 @@ Page({
    */
   getCategoryList: function() {
     let _this = this;
-    App._get('category/lists', {}, function(result) {
+    App._get('GetCategoryLists', {}, function(result) {
       let data = result.data;
       _this.setData({
         list: data.list,

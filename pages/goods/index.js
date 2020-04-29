@@ -48,7 +48,7 @@ Page({
    */
   getGoodsDetail() {
     let _this = this;
-    App._get('goods/detail', {
+    App._get('GetGoodsDetail', {
       goods_id: _this.data.goods_id
     }, function(result) {
       // 初始化商品详情数据

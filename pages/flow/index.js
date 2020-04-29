@@ -37,7 +37,7 @@ Page({
    */
   getCartList() {
     let _this = this;
-    App._get('cart/lists', {}, function(result) {
+    App._get('GetCartLists', {}, function(result) {
       _this.setData(result.data);
     });
   },

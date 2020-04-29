@@ -313,7 +313,7 @@ App({
     wx.login({
       success(res) {
         // 发送用户信息
-        App._post_form('user/login', {
+        App._post_form('UserLogin', {
           code: res.code,
           user_info: e.detail.rawData,
           encrypted_data: e.detail.encryptedData,

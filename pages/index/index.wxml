@@ -20,12 +20,16 @@
         <navigator hover-class="none" style="display: inline-block;" url="../goods/index?goods_id={{item.goods_id}}" wx:for="{{newest}}" wx:key="this">
           <view class="page-column">
             <view class="sale_img">
-              <image mode="aspectFill" src="{{item.image[0].file_path}}"></image>
+              <image mode="aspectFill" src="{{item.defaultimgurl}}"></image>
             </view>
             <view class="content onelist-hidden">
               <text>{{item.goods_name}}</text>
             </view>
-            <text class="price col-m f-30">￥{{item.spec[0].goods_price}}</text>
+            <view class="content onelist-hidden">
+              <text class="price col-m f-30 price-delete">￥{{item.goods_costprice}}</text>
+              <text class="price col-m f-30">￥{{item.goods_price}}</text>
+            </view>
+            
           </view>
         </navigator>
       </scroll-view>
@@ -42,13 +46,13 @@
       <navigator class="list b-f" hover-class="none" url="../goods/index?goods_id={{item.goods_id}}" wx:for="{{best}}" wx:key="this">
         <view class="left">
           <view class="img">
-            <image class="goodsImg" mode="scaleToFill" src="{{item.image[0].file_path}}"></image>
+            <image class="goodsImg" mode="scaleToFill" src="{{item.defaultimgurl}}"></image>
           </view>
         </view>
         <view class="right">
           <view class="cont">
             <text class="f-30 title twolist-hidden m-top10">{{item.goods_name}}</text>
-            <text class="price f-34 col-m f-w">￥{{item.spec[0].goods_price}}</text>
+            <text class="price f-34 col-m f-w">￥{{item.goods_price}}</text>
           </view>
         </view>
       </navigator>

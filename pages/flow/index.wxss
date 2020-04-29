@@ -87,6 +87,9 @@
   width: 100%;
   margin-left: 15px;
 }
+.price-delete{
+  text-decoration:line-through
+}
 
 .dish-item-pic image {
   width: 200rpx;
