@@ -56,10 +56,11 @@ Page({
       title: '加载中',
       mask: true
     })
-    App._post_form('cart/add', {
+    App._post_form('CartDecAndAdd', {
       goods_id: goods.goods_id,
       goods_num: 1,
-      goods_sku_id: goodsSkuId
+      goods_sku_id: goodsSkuId,
+      oper:'Add'
     }, () => {
       goods.total_num++;
       _this.setData({
@@ -85,9 +86,10 @@ Page({
         title: '加载中',
         mask: true
       })
-      App._post_form('cart/sub', {
+      App._post_form('CartDecAndAdd', {
         goods_id: goods.goods_id,
-        goods_sku_id: goodsSkuId
+        goods_sku_id: goodsSkuId,
+        oper:'dec'
       }, () => {
         goods.total_num--;
         goods.total_num > 0 &&
@@ -99,7 +101,30 @@ Page({
 
     }
   },
-
+  import(e){
+    let _this = this,
+      index = e.currentTarget.dataset.index,
+      goodsSkuId = e.currentTarget.dataset.skuId,
+      goods = _this.data.goods_list[index],
+      order_total_price = _this.data.order_total_price;
+    // 后端同步更新
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
+    App._post_form('CartDecAndAdd', {
+      goods_id: goods.goods_id,
+      goods_num: 1,
+      goods_sku_id: goodsSkuId,
+      oper:'Add'
+    }, () => {
+      goods.total_num++;
+      _this.setData({
+        ['goods_list[' + index + ']']: goods,
+        order_total_price: _this.mathadd(order_total_price, goods.goods_price)
+      });
+    });
+  },
   /**
    * 删除商品
    */
@@ -111,9 +136,10 @@ Page({
       title: "提示",
       content: "您确定要移除当前商品吗?",
       success(e) {
-        e.confirm && App._post_form('cart/delete', {
+        e.confirm && App._post_form('CartDecAndAdd', {
           goods_id,
-          goods_sku_id: goodsSkuId
+          goods_sku_id: goodsSkuId,
+          oper:'delete'
         }, function(result) {
           _this.getCartList();
         });

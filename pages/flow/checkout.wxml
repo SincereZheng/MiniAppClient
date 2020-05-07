@@ -12,7 +12,7 @@
               <text class="col-m"></text>
             </view>
             <view class="flow-checkout-address">
-              {{address.region.province}} {{address.region.city}} {{address.region.region}} {{address.detail}}
+              {{address.province}} {{address.city}} {{address.region}} {{address.detail}}
             </view>
           </view>
           <view class="flow-header-right pr-12">
@@ -41,11 +41,11 @@
       <navigator url="../goods/index?goods_id={{item.goods_id}}">
         <view class="dis-flex flow-shopList" data-index="{{index}}">
           <view class="flow-list-left">
-            <image mode="scaleToFill" src="{{item.image[0].file_path}}"></image>
+            <image mode="scaleToFill" src="{{item.imgurl}}"></image>
           </view>
           <view class="flow-list-right">
             <text class="f-30 col-3 twolist-hidden">{{item.goods_name}}</text>
-            <text class="f-26 col-7">{{item.goods_sku.goods_attr}}</text>
+            <text class="f-26 col-7">{{item.goods_sku}}</text>
             <view class="flow-list-cont">
               <text class="flow-cont">￥{{item.goods_price}}</text>
               <text class="small">×{{item.total_num}}</text>
@@ -72,7 +72,7 @@
       <text class="flex-five">配送费用:</text>
       <view class="flex-five t-r">
         <view wx:if="{{address.address_id}}">
-          <text class="col-m" wx:if="{{intra_region}}">+￥{{express_price}}</text>
+          <text class="col-m" wx:if="{{intra_region}}">￥{{express_price}}</text>
           <text wx:else>不在配送范围</text>
         </view>
         <view wx:else>

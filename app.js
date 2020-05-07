@@ -202,6 +202,11 @@ App({
           App.showError('网络请求出错');
           return false;
         }
+        if(res.statusCode == 200 && res.data !=null && res.data.code==-500){
+          console.log(res);
+          App.showError(res.data.msg);
+          return false;
+        }
         if (res.data.code === -1) {
           // 登录态失效, 重新登录
           App.doLogin(() => {

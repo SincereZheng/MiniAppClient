@@ -27,10 +27,11 @@ Page({
    */
   getAddressDetail: function(address_id) {
     let _this = this;
-    App._get('address/detail', {
+    App._get('GetAddressDetail', {
       address_id
     }, function(result) {
       _this.setData(result.data);
+      _this.setData({region:result.data.detail.region});
     });
   },
 
@@ -58,8 +59,8 @@ Page({
 
     // 提交到后端
     values.address_id = _this.data.detail.address_id;
-    App._post_form('address/edit', values, function(result) {
-      App.showSuccess(result.msg, function() {
+    App._post_form('ModifyAddress', values, function(result) {
+      App.showSuccess(result.RetMsg, function() {
         wx.navigateBack();
       });
     }, false, function() {

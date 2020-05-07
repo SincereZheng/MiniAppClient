@@ -47,8 +47,8 @@ Page({
     });
 
     // 提交到后端
-    App._post_form('address/add', values, function(result) {
-      App.showSuccess(result.msg, function() {
+    App._post_form('AddAddress', values, function(result) {
+      App.showSuccess(result.RetMsg, function() {
         wx.navigateBack();
       });
     }, false, function() {
@@ -81,7 +81,7 @@ Page({
       return false;
     }
     if (!this.data.region) {
-      this.data.error = '省市区不能空';
+      this.data.error = '省市县（区）不能空';
       return false;
     }
     if (values.detail === '') {

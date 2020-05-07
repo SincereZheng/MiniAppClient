@@ -29,7 +29,7 @@ Page({
    */
   getHelpList: function () {
     let _this = this;
-    App._get('wxapp/help', {}, function (result) {
+    App._get('WxappHelp', {}, function (result) {
       _this.setData(result.data);
     });
   },

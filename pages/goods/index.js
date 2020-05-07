@@ -226,12 +226,12 @@ Page({
       });
     } else if (submitType === 'addCart') {
       // 加入购物车
-      App._post_form('cart/add', {
+      App._post_form('CartAdd', {
         goods_id: _this.data.goods_id,
         goods_num: _this.data.goods_num,
         goods_sku_id: _this.data.goods_sku_id,
       }, function(result) {
-        App.showSuccess(result.msg);
+        App.showSuccess(result.RetMsg);
         _this.setData(result.data);
       });
     }

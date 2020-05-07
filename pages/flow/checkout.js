@@ -45,8 +45,8 @@ Page({
 
     // 获取订单信息回调方法
     let callback = function(result) {
-      if (result.code !== 1) {
-        App.showError(result.msg);
+      if (result.RetCode < 0) {
+        App.showError(result.RetMsg);
         return false;
       }
       // 显示错误信息
@@ -63,7 +63,7 @@ Page({
 
     // 立即购买
     if (options.order_type === 'buyNow') {
-      App._get('order/buyNow', {
+      App._get('OrderBuyNow', {
         goods_id: options.goods_id,
         goods_num: options.goods_num,
         goods_sku_id: options.goods_sku_id,
@@ -74,7 +74,7 @@ Page({
 
     // 购物车结算
     else if (options.order_type === 'cart') {
-      App._get('order/cart', {}, function(result) {
+      App._get('OrderCart', {}, function(result) {
         callback(result);
       });
     }
