@@ -135,9 +135,9 @@ Page({
     if (typeof skuItem === 'object') {
       this.setData({
         goods_sku_id: skuItem.spec_sku_id,
-        goods_price: skuItem.form.goods_price,
-        line_price: skuItem.form.line_price,
-        stock_num: skuItem.form.stock_num,
+        goods_price: skuItem.goods_price,
+        line_price: skuItem.line_price,
+        stock_num: skuItem.stock_num,
       });
     }
   },
