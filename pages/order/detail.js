@@ -23,7 +23,7 @@ Page({
    */
   getOrderDetail: function (order_id) {
     let _this = this;
-    App._get('user.order/detail', { order_id }, function (result) {
+    App._get('GetUserOrderDetail', { order_id }, function (result) {
       _this.setData(result.data);
     });
   },

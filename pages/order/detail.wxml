@@ -9,7 +9,7 @@
             <text class="f-26 col-m">{{order.address.phone}}</text>
           </view>
           <view class="flow-checkout-address">
-            {{order.address.region.province}} {{order.address.region.city}} {{order.address.region.region}} {{order.address.detail}}
+            {{order.address.province}} {{order.address.city}} {{order.address.county}} {{order.address.detail}}
           </view>
         </view>
       </view>

@@ -108,12 +108,18 @@ Page({
 
     // 订单创建成功后回调--微信支付
     let callback = function(result) {
-      if (result.code === -10) {
-        App.showError(result.msg, function() {
+      if (result.RetCode === -10) {
+        App.showError(result.RetMsg, function() {
           // 跳转到未付款订单
           wx.redirectTo({
             url: '../order/index?type=payment',
           });
+        });
+        return false;
+      }
+      if (result.RetCode === -20) {
+        App.showError(result.RetMsg, function() {
+
         });
         return false;
       }
@@ -151,7 +157,7 @@ Page({
 
     // 创建订单-立即购买
     if (options.order_type === 'buyNow') {
-      App._post_form('order/buyNow', {
+      App._post_form('SubmitOrderBuyNow', {
         goods_id: options.goods_id,
         goods_num: options.goods_num,
         goods_sku_id: options.goods_sku_id,
@@ -172,7 +178,7 @@ Page({
 
     // 创建订单-购物车结算
     else if (options.order_type === 'cart') {
-      App._post_form('order/cart', {}, function(result) {
+      App._post_form('SubmitOrderCart', {}, function(result) {
         // success
         console.log('success');
         callback(result);
