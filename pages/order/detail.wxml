@@ -1,15 +1,15 @@
-<view class="container p-bottom" wx:if="{{order.order_id}}">
+<view class="container p-bottom" wx:if="{{order_id}}">
   <scroll-view scroll-y="true">
 
     <!-- 收货地址 -->
     <view class="b-f">
       <view class="flow-checkout-header b-f dis-flex">
         <view class="flow-header-left padding-box">
-          <view class="flow-checkout-admin f-26 col-3">{{order.address.name}}
-            <text class="f-26 col-m">{{order.address.phone}}</text>
+          <view class="flow-checkout-admin f-26 col-3">{{address.name}}
+            <text class="f-26 col-m">{{address.phone}}</text>
           </view>
           <view class="flow-checkout-address">
-            {{order.address.province}} {{order.address.city}} {{order.address.county}} {{order.address.detail}}
+            {{address.province}} {{address.city}} {{address.county}} {{address.detail}}
           </view>
         </view>
       </view>
