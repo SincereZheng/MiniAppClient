@@ -16,12 +16,12 @@
     </view>
 
     <!-- 物流信息 -->
-    <view class="flow-all-money b-f padding-box m-top20" wx:if="{{order.delivery_status.value == 20}}">
+    <view class="flow-all-money b-f padding-box m-top20" wx:if="{{orderstatus.deliverystatus == 20}}">
       <view class="dis-flex flow-all-list-cont">
-        <text class="col-7">快递公司: {{order.express_company}}</text>
+        <text class="col-7">快递公司: {{orderstatus.expresscompany}}</text>
       </view>
       <view class="dis-flex flow-all-list-cont">
-        <text class="col-7" selectable="{{true}}">快递单号: {{order.express_no}}</text>
+        <text class="col-7" selectable="{{true}}">快递单号: {{orderstatus.expressno}}</text>
       </view>
     </view>
 
@@ -33,10 +33,10 @@
             <text class="title">商品列表</text>
           </view>
           <view class="flex-box t-r">
-            <text class="col-m" wx:if="{{order.pay_status.value==10}}">{{order.pay_status.text}}</text>
-            <text class="col-m" wx:if="{{order.pay_status.value==20 && order.delivery_status.value==10}}">{{order.delivery_status.text}}</text>
-            <text class="col-m" wx:if="{{order.pay_status.value==20 && order.delivery_status.value==20 && order.receipt_status.value==10}}">{{order.receipt_status.text}}</text>
-            <text class="col-m" wx:if="{{order.order_status.value==30}}">{{order.order_status.text}}</text>
+            <!-- <text class="col-m" wx:if="{{orderstatus.paystatus==10}}">{{orderstatus.paystatustext}}</text>
+            <text class="col-m" wx:if="{{orderstatus.paystatus==20 && orderstatus.deliverystatus==10}}">{{orderstatus.deliverystatustext}}</text>
+            <text class="col-m" wx:if="{{orderstatus.paystatus==20 && orderstatus.deliverystatus==20 && orderstatus.receiptstatus==10}}">{{orderstatus.receiptstatustext}}</text> -->
+            <text class="col-m">{{orderstatus.orderstatustext}}</text>
           </view>
         </view>
       </view>
@@ -55,7 +55,7 @@
     <view class="padding-box b-f">
       <view bindtap="goodsDetail" class="dis-flex flow-shopList b-f" data-id="{{item.goods_id}}" wx:for="{{order.goods}}" wx:key="this">
         <view class="flow-list-left">
-          <image mode="scaleToFill" src="{{item.image.file_path}}"></image>
+          <image mode="scaleToFill" src="{{item.imgurl}}"></image>
         </view>
         <view class="flow-list-right">
           <text class="h4 twolist-hidden">{{item.goods_name}}</text>
@@ -86,7 +86,7 @@
       </view>
       <view class="dis-flex flow-all-list-cont">
         <text class="flex-five col-7">配送费用:</text>
-        <text class="flex-five col-m t-r">+￥{{order.express_price}}</text>
+        <text class="flex-five col-m t-r">￥{{order.express_price}}</text>
       </view>
       <view class="dis-flex flow-all-list-cont">
         <text class="flex-five col-7">应付金额:</text>
@@ -97,15 +97,15 @@
   </scroll-view>
 
   <view class="flow-fixed-footer b-f">
-    <view class="dis-flex chackout-box" wx:if="{{order.pay_status.value==10}}">
+    <view class="dis-flex chackout-box" wx:if="{{orderstatus.paystatus==10}}">
       <view bindtap="cancelOrder" class="flex-box chackout-left-detail t-c">
         取消订单
       </view>
       <view class="flex-box chackout-right-detail">
-        <text bindtap="payOrder" class="flow-btn" wx:if="{{order.pay_status.value==10}}">去付款</text>
+        <text bindtap="payOrder" class="flow-btn" wx:if="{{orderstatus.paystatus==10}}">去付款</text>
       </view>
     </view>
-    <view class="flow-btn h3" wx:if="{{order.delivery_status.value==20 && order.receipt_status.value==10}}">
+    <view class="flow-btn h3" wx:if="{{orderstatus.deliverystatus==20 && orderstatus.receiptstatus==10}}">
       <view bindtap="receipt">确认收货</view>
     </view>
   </view>

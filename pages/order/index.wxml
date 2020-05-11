@@ -16,10 +16,10 @@
                   <text class="title">商品列表</text>
                 </view>
                 <view class="flex-box t-r">
-                  <text class="cont" wx:if="{{item.pay_status==10}}">{{item.pay_statustext}}</text>
+                  <!-- <text class="cont" wx:if="{{item.pay_status==10}}">{{item.pay_statustext}}</text>
                   <text class="cont" wx:if="{{item.pay_status==20 && item.delivery_status==10}}">{{item.delivery_statustext}}</text>
-                  <text class="cont" wx:if="{{item.pay_status==20 && item.delivery_status==20 && item.receipt_status==10}}">{{item.receipt_statustext}}</text>
-                  <text class="cont" wx:if="{{item.order_status==30}}">{{item.order_statustext}}</text>
+                  <text class="cont" wx:if="{{item.pay_status==20 && item.delivery_status==20 && item.receipt_status==10}}">{{item.receipt_statustext}}</text> -->
+                  <text class="cont">{{item.order_statustext}}</text>
                 </view>
               </view>
             </view>
