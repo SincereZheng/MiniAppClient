@@ -59,7 +59,7 @@ Page({
       content: "确认取消订单？",
       success: function (o) {
         if (o.confirm) {
-          App._post_form('user.order/cancel', { order_id }, function (result) {
+          App._post_form('CancelOrder', { order_id }, function (result) {
             _this.getOrderList(_this.data.dataType);
           });
         }
@@ -95,9 +95,9 @@ Page({
 
     // 显示loading
     wx.showLoading({ title: '正在处理...', });
-    App._post_form('user.order/pay', { order_id }, function (result) {
-      if (result.code === -10) {
-        App.showError(result.msg);
+    App._post_form('PayOrder', { order_id }, function (result) {
+      if (result.RetCode === -10) {
+        App.showError(result.RetMsg);
         return false;
       }
       // 发起微信支付

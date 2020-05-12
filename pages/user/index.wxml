@@ -36,6 +36,7 @@
             <button formType="submit" class="btn-normal">
               <text class="order-navbar__icon iconfont icon-form"></text>
               <text class="order-navbar__name">全部订单</text>
+              <text class="order-badge" wx:if="{{orderCount.all > 0}}">{{orderCount.all}}</text>
             </button>
           </form>
         </view>
