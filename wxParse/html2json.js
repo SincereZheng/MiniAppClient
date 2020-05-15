@@ -71,7 +71,7 @@ module.exports = {
             end: function(e) {
                 var t = o.shift();
                 if (t.tag !== e && console.error("invalid state: mismatch end tag"), "video" === t.tag && n.source && (t.attr.src = n.source,
-                delete result.source), 0 === o.length) n.nodes.push(t); else {
+                delete n.source), 0 === o.length) n.nodes.push(t); else {
                     var r = o[0];
                     void 0 === r.nodes && (r.nodes = []), r.nodes.push(t);
                 }
