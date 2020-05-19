@@ -3,12 +3,22 @@ let App = getApp();
 Page({
   data: {
     list: [],
+    operateText:{},
     default_id: null,
   },
 
   onLoad: function(options) {
     // 当前页面参数
     this.data.options = options;
+    if(options.from == "flow"){
+      this.setData({
+        operateText:{Selected:'已选择',UnSelected:'选择'}
+      })
+    }else{
+      this.setData({
+        operateText:{Selected:'默认地址',UnSelected:'设为默认'}
+      })
+    }
   },
 
   onShow: function() {

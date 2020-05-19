@@ -17,8 +17,8 @@
           <radio-group bindchange="setDefault" class="radio-group">
             <label class="radio">
               <radio checked="{{item.address_id == default_id}}" color="#ff495e" value="{{item.address_id}}"></radio>
-              <text class="cont" wx:if="{{item.address_id == default_id}}">已选择</text>
-              <text class="cont" wx:else>选择</text>
+              <text class="cont" wx:if="{{item.address_id == default_id}}">{{operateText.Selected}}</text>
+              <text class="cont" wx:else>{{operateText.UnSelected}}</text>
             </label>
           </radio-group>
         </view>
