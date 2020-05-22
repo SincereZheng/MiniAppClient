@@ -213,6 +213,10 @@ Page({
   submit(e) {
     let _this = this,
       submitType = e.currentTarget.dataset.type;
+    if(!App.checkIsLogin()){
+      App.doLogin()
+      return
+    }
 
     if (submitType === 'buyNow') {
       // 立即购买
@@ -233,7 +237,7 @@ Page({
       }, function(result) {
         App.showSuccess(result.RetMsg);
         _this.setData(result.data);
-      });
+      },null,null,true);
     }
   },
 

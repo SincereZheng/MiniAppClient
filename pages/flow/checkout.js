@@ -86,7 +86,11 @@ Page({
    */
   selectAddress: function() {
     wx.navigateTo({
-      url: '../address/' + (this.data.exist_address ? 'index?from=flow' : 'create')
+      url: '../address/' + (this.data.exist_address ? 'index?from=flow' : 'create'),
+      events:null,
+      success:function(res){
+        console.log(res)
+      }
     });
   },
 
@@ -173,7 +177,7 @@ Page({
         console.log('complete');
         // 解除按钮禁用
         _this.data.disabled = false;
-      });
+      },true);
     }
 
     // 创建订单-购物车结算

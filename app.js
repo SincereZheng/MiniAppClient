@@ -127,7 +127,7 @@ App({
     // 构造请求参数
     data = Object.assign({
       wxapp_id: 10001,
-      token: wx.getStorageSync('token')
+      token: wx.getStorageSync('token') ? wx.getStorageSync('token') : 'token'
     }, data);
 
     // if (typeof check_login === 'undefined')
@@ -135,7 +135,7 @@ App({
 
     // 构造get请求
     let request = () => {
-      data.token = wx.getStorageSync('token');
+      data.token = wx.getStorageSync('token') ? wx.getStorageSync('token') : 'token';
       wx.request({
         url: App.api_root + url,
         header: {
@@ -148,7 +148,7 @@ App({
             App.showError('网络请求出错');
             return false;
           }
-          if(res.statusCode == 200 && res.data !=null && res.data.code==-500){
+          if (res.statusCode == 200 && res.data != null && res.data.code == -500) {
             console.log(res);
             App.showError(res.data.msg);
             return false;
@@ -177,63 +177,81 @@ App({
       });
     };
     // 判断是否需要验证登录
-    check_login ? App.doLogin(request) : request();
+    //check_login ? App.doLogin(request) : request();
+    if(check_login){
+      if(!App.checkIsLogin())
+        App.doLogin(request)
+      else
+      request()
+    }else{
+      request()
+    }
   },
 
   /**
    * post提交
    */
-  _post_form(url, data, success, fail, complete) {
+  _post_form(url, data, success, fail, complete, check_login) {
     wx.showNavigationBarLoading();
     let App = this;
     // 构造请求参数
-    data = Object.assign({
-      wxapp_id: 10001,
-      token: wx.getStorageSync('token')
-    }, data);
-    wx.request({
-      url: App.api_root + url,
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-      },
-      method: 'POST',
-      data,
-      success(res) {
-        if (res.statusCode !== 200 || typeof res.data !== 'object') {
-          App.showError('网络请求出错');
-          return false;
-        }
-        if(res.statusCode == 200 && res.data !=null && res.data.code==-500){
-          console.log(res);
-          App.showError(res.data.msg);
-          return false;
-        }
-        if (res.data.code === -1) {
-          // 登录态失效, 重新登录
-          App.doLogin(() => {
-            App._post_form(url, data, success, fail);
-          });
-          return false;
-        } else if (res.data.code === 0) {
-          App.showError(res.data.msg, () => {
+    let postfunc = function () {
+      data = Object.assign({
+        wxapp_id: 10001,
+        token: wx.getStorageSync('token') ? wx.getStorageSync('token') : 'token'
+      }, data);
+      wx.request({
+        url: App.api_root + url,
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+        },
+        method: 'POST',
+        data,
+        success(res) {
+          if (res.statusCode !== 200 || typeof res.data !== 'object') {
+            App.showError('网络请求出错');
+            return false;
+          }
+          if (res.statusCode == 200 && res.data != null && res.data.code == -500) {
+            console.log(res);
+            App.showError(res.data.msg);
+            return false;
+          }
+          if (res.data.code === -1) {
+            // 登录态失效, 重新登录
+            App.doLogin(() => {
+              App._post_form(url, data, success, fail);
+            });
+            return false;
+          } else if (res.data.code === 0) {
+            App.showError(res.data.msg, () => {
+              fail && fail(res);
+            });
+            return false;
+          }
+          success && success(res.data);
+        },
+        fail(res) {
+          // console.log(res);
+          App.showError(res.errMsg, () => {
             fail && fail(res);
           });
-          return false;
+        },
+        complete(res) {
+          wx.hideLoading();
+          wx.hideNavigationBarLoading();
+          complete && complete(res);
         }
-        success && success(res.data);
-      },
-      fail(res) {
-        // console.log(res);
-        App.showError(res.errMsg, () => {
-          fail && fail(res);
-        });
-      },
-      complete(res) {
-        wx.hideLoading();
-        wx.hideNavigationBarLoading();
-        complete && complete(res);
-      }
-    });
+      });
+    }
+    if(check_login){
+      if(!App.checkIsLogin())
+        App.doLogin(postfunc)
+      else
+      postfunc()
+    }else{
+      postfunc()
+    }
   },
 
   /**
@@ -305,7 +323,7 @@ App({
    * 验证登录
    */
   checkIsLogin() {
-    return wx.getStorageSync('token') != '' && wx.getStorageSync('user_id') != '';
+    return wx.getStorageSync('token') ? wx.getStorageSync('token') : 'token' != '' && wx.getStorageSync('user_id') != '';
   },
 
   /**
