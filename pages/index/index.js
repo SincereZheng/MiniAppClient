@@ -15,12 +15,15 @@ Page({
     newest: {},
     best: {},
     banner:{},
-
+    ServerFileHost:'',
     scrollTop: 0,
   },
 
   onLoad: function() {
     // 设置页面标题
+    this.setData({
+      ServerFileHost:App.ServerFileHost
+    })
     App.setTitle();
     // 设置navbar标题、颜色
     App.setNavigationBar();

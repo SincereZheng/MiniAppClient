@@ -45,6 +45,7 @@ App({
   setApiRoot() {
     let App = this;
     App.api_root = `${siteInfo.siteroot}api/process/`;
+    App.ServerFileHost = `${siteInfo.siteroot}Files/`;
   },
 
   /**

@@ -20,7 +20,12 @@
         <navigator hover-class="none" style="display: inline-block;" url="../goods/index?goods_id={{item.goods_id}}" wx:for="{{newest}}" wx:key="this">
           <view class="page-column">
             <view class="sale_img">
-              <image mode="aspectFill" src="{{item.defaultimgurl}}"></image>
+              <block wx:if="{{item.hasprice == 1}}">
+                <image mode="aspectFill" src="{{item.defaultimgurl}}"></image>
+              </block>
+              <block wx:else>
+                <image mode="aspectFill" src="{{ServerFileHost}}{{item.defaultimgurl}}"></image>
+              </block>
             </view>
             <view class="content onelist-hidden">
               <text>{{item.goods_name}}</text>
@@ -46,7 +51,12 @@
       <navigator class="list b-f" hover-class="none" url="../goods/index?goods_id={{item.goods_id}}" wx:for="{{best}}" wx:key="this">
         <view class="left">
           <view class="img">
-            <image class="goodsImg" mode="scaleToFill" src="{{item.defaultimgurl}}"></image>
+            <block wx:if="{{item.hasprice == 1}}">
+              <image class="goodsImg" mode="scaleToFill" src="{{item.defaultimgurl}}"></image>
+            </block>
+              <block wx:else>
+                <image class="goodsImg" mode="scaleToFill" src="{{ServerFileHost}}{{item.defaultimgurl}}"></image>
+              </block>
           </view>
         </view>
         <view class="right">
