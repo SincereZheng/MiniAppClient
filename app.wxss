@@ -538,7 +538,6 @@ page {
 .flow-shopList .flow-list-left image {
   width: 200rpx;
   height: 200rpx;
-  border: 1rpx solid #eee;
   background: #fff;
 }
 
