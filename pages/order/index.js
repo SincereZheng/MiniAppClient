@@ -78,7 +78,7 @@ Page({
       content: "确认收到商品？",
       success: function (o) {
         if (o.confirm) {
-          App._post_form('user.order/receipt', { order_id }, function (result) {
+          App._post_form('UserOrderReceipt', { order_id }, function (result) {
             _this.getOrderList(_this.data.dataType);
           });
         }

@@ -28,6 +28,13 @@ Page({
     });
   },
 
+  viewTrade:function(e){
+    let expressno = e.currentTarget.dataset.expressno;
+    let expresscompany = e.currentTarget.dataset.expresscompany;
+    wx.navigateTo({
+      url: '../order/trade?expressno=' + expressno +'&expresscompany='+expresscompany
+    });
+  },
   /**
    * 跳转到商品详情
    */

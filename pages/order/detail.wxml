@@ -52,6 +52,7 @@
         </view>
         <view class="dis-flex flow-all-list-cont">
           <text class="col-7" selectable="{{true}}">快递单号: {{status.expressno}}</text>
+          <button class="col-7" style="font-size:10px" bindtap="viewTrade" data-expressno="{{status.expressno}}" data-expresscompany="{{status.expresscompanycode}}">查看物流</button> 
         </view>
       </view>
       <view class="padding-box b-f">
