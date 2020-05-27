@@ -148,9 +148,9 @@ App({
             App.showError('网络请求出错');
             return false;
           }
-          if (res.statusCode == 200 && res.data != null && res.data.code == -500) {
+          if (res.statusCode == 200 && res.data != null && res.data.RetCode == -500) {
             console.log(res);
-            App.showError(res.data.msg);
+            App.showError(res.data.RetMsg);
             return false;
           }
           if (res.data.code === -1) {
@@ -212,9 +212,9 @@ App({
             App.showError('网络请求出错');
             return false;
           }
-          if (res.statusCode == 200 && res.data != null && res.data.code == -500) {
+          if (res.statusCode == 200 && res.data != null && res.data.RetCode == -500) {
             console.log(res);
-            App.showError(res.data.msg);
+            App.showError(res.data.RetMsg);
             return false;
           }
           if (res.data.code === -1) {
