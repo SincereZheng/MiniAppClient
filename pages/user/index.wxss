@@ -12,7 +12,7 @@
   width: 100%;
   height: 310rpx;
   align-content: center;
-  background-color: #fd0;
+  background-color: #1bc3b8;
   background-repeat: no-repeat;
   background-position: center right;
   background-size: auto 100%;
@@ -45,6 +45,7 @@
 .user-header .user-header-cont .user-header-cont-name {
   font-size: 32rpx;
   padding: 20rpx 0;
+  color: white;
 }
 
 /* 订单导航栏 */
