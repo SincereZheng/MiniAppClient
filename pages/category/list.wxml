@@ -38,7 +38,7 @@
           <navigator class="list b-f" hover-class="none" url="../goods/index?goods_id={{item.goods_id}}" wx:for="{{list.data}}" wx:key="list">
             <view class="left">
               <view class="img">
-                <image class="goodsImg" mode="scaleToFill" src="{{item.imgurl}}"></image>
+                <image class="goodsImg" mode="scaleToFill" src="{{ServerFileHost}}{{item.imgurl}}"></image>
               </view>
             </view>
             <view class="right">

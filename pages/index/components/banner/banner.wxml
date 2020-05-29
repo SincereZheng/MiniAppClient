@@ -6,7 +6,7 @@
     style="height:{{imgHeights[item_key][imgCurrent[item_key]]}}rpx">
     <navigator hover-class="none" wx:for-item="banner" url="/{{banner.linkUrl}}" wx:for="{{item.data}}" wx:key="this">
       <swiper-item item-id="{{index}}">
-        <image class="slide-image" bindload="imagesHeight" src="{{banner.imgUrl}}" data-id="{{index}}" data-item-key="{{item_key}}"></image>
+        <image class="slide-image" bindload="imagesHeight" src="{{ServerFileHost}}{{banner.imgUrl}}" data-id="{{index}}" data-item-key="{{item_key}}"></image>
       </swiper-item>
     </navigator>
   </swiper>

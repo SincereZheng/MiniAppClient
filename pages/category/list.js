@@ -20,6 +20,7 @@ Page({
     no_more: false,
 
     page: 1,
+    ServerFileHost:''
   },
 
   /**
@@ -27,7 +28,9 @@ Page({
    */
   onLoad: function (option) {
     let _this = this;
-
+    this.setData({
+      ServerFileHost:App.ServerFileHost
+    })
     // 设置商品列表高度
     _this.setListHeight();
 

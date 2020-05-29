@@ -27,6 +27,7 @@ Page({
     goods_sku_id: 0, // 规格id
     cart_total_num: 0, // 购物车商品总数量
     specData: {}, // 多规格信息
+    ServerFileHost:'',
   },
 
   // 记录规格的数组
@@ -36,6 +37,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    this.setData({
+      ServerFileHost:App.ServerFileHost
+    })
     let _this = this;
     // 商品id
     _this.data.goods_id = options.goods_id;

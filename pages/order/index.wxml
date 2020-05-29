@@ -39,7 +39,7 @@
                   <view class="left">
                     <view class="dis-flex">
                       <view class="order-shop-left" wx:for="{{item.goods}}" wx:key="goods">
-                        <image src="{{item.imgurl}}"></image>
+                        <image src="{{ServerFileHost}}{{item.imgurl}}"></image>
                       </view>
                     </view>
                   </view>

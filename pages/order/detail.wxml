@@ -58,7 +58,7 @@
       <view class="padding-box b-f">
         <view bindtap="goodsDetail" class="dis-flex flow-shopList b-f" data-id="{{item.goods_id}}" wx:for="{{status.goods}}" wx:key="this">
           <view class="flow-list-left">
-            <image mode="scaleToFill" src="{{item.imgurl}}"></image>
+            <image mode="scaleToFill" src="{{ServerFileHost}}{{item.imgurl}}"></image>
           </view>
           <view class="flow-list-right">
             <text class="h4 twolist-hidden">{{item.goods_name}}</text>

@@ -8,6 +8,7 @@ Page({
   data: {
     dataType: 'all',
     list: [],
+    ServerFileHost:''
   },
 
   /**
@@ -16,6 +17,9 @@ Page({
   onLoad: function (options) {
     this.data.dataType = options.type || 'all';
     this.setData({ dataType: this.data.dataType });
+    this.setData({
+      ServerFileHost:App.ServerFileHost
+    })
   },
 
   /**

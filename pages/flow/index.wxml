@@ -6,7 +6,7 @@
           <view class="dish-item-wrp">
             <navigator hover-class="none" url="../goods/index?goods_id={{item.goods_id}}">
               <view class="dish-item-pic">
-                <image class="image" src="{{item.image[0].file_path}}"></image>
+                <image class="image" src="{{ServerFileHost}}{{item.image[0].file_path}}"></image>
               </view>
             </navigator>
             <view class="dish-item-info">

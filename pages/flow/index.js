@@ -9,13 +9,16 @@ Page({
     goods_list: [], // 商品列表
     order_total_num: 0,
     order_total_price: 0,
+    ServerFileHost:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    this.setData({
+      ServerFileHost:App.ServerFileHost
+    })
   },
 
   /**

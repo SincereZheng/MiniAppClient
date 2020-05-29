@@ -18,11 +18,15 @@ Page({
     list: [],
 
     // show
-    notcont: false
+    notcont: false,
+    ServerFileHost:''
   },
 
   onLoad: function() {
     let _this = this;
+    this.setData({
+      ServerFileHost:App.ServerFileHost
+    })
     // 设置分类列表高度
     _this.setListHeight();
     // 获取分类列表

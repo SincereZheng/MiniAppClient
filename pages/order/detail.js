@@ -8,6 +8,7 @@ Page({
   data: {
     order_id: null,
     order: {},
+    ServerFileHost:''
   },
 
   /**
@@ -16,6 +17,9 @@ Page({
   onLoad: function (options) {
     this.data.order_id = options.order_id;
     this.getOrderDetail(options.order_id);
+    this.setData({
+      ServerFileHost:App.ServerFileHost
+    })
   },
 
   /**
