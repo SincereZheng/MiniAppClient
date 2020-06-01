@@ -9,7 +9,8 @@ Page({
     goods_list: [], // 商品列表
     order_total_num: 0,
     order_total_price: 0,
-    ServerFileHost:''
+    ServerFileHost:'',
+    checkalldisabled:''
   },
 
   /**
@@ -42,6 +43,7 @@ Page({
     let _this = this;
     App._get('GetCartLists', {}, function(result) {
       _this.setData(result.data);
+      _this.setData({checkalldisabled:''});
     });
   },
 
@@ -190,10 +192,12 @@ Page({
 
   setCartChecked:function(e){
     var cartid = e.currentTarget.dataset.cartid;
+    this.setData({checkalldisabled:'true'});
     App._post_form('SetCartListChecked', {
       cartid: cartid
     }, () => {
       this.getCartList();
+      
     });
   }
 })

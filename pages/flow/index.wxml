@@ -37,8 +37,8 @@
         </view>
       </view>
       <view class="cart-tab-wrp">
-        <view>
-          <radio class="cart-item-radio" bindtap="setCartChecked" data-cartid="0" checked="{{selectall==1}}">全选</radio>
+        <view class="cart-item-radio">
+          <radio disabled="{{checkalldisabled}}" class="cart-item-radio-select" bindtap="setCartChecked" data-cartid="0" checked="{{selectall==1}}">全选</radio>
         </view>
         <view class="cart-item-total cart-tab-item">
           <text class="cart-item-total-price h4">合计：￥{{order_total_price}}</text>
