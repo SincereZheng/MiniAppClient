@@ -154,9 +154,15 @@ Page({
    * 购物车结算
    */
   submit(t) {
-    wx.navigateTo({
-      url: '../flow/checkout?order_type=cart'
+    App._post_form('BeforeOrderCartCheck', {}, (result) => {
+      if(result && result.data && result.data.errmsg != "")
+        App.showError(result.data.errmsg);
+      else
+        wx.navigateTo({
+          url: '../flow/checkout?order_type=cart'
+        });
     });
+    
   },
 
   /**
@@ -182,4 +188,12 @@ Page({
     });
   },
 
+  setCartChecked:function(e){
+    var cartid = e.currentTarget.dataset.cartid;
+    App._post_form('SetCartListChecked', {
+      cartid: cartid
+    }, () => {
+      this.getCartList();
+    });
+  }
 })
