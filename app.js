@@ -57,6 +57,7 @@ App({
       // 记录小程序基础信息
       // console.log(callback);
       wx.setStorageSync('wxapp', result.data.wxapp);
+      App.wxapp_id = result.data.appid;
       callback && callback(result.data.wxapp);
     }, false, false);
   },
@@ -126,7 +127,7 @@ App({
 
     // 构造请求参数
     data = Object.assign({
-      wxapp_id: 10001,
+      wxapp_id: App.wxapp_id,
       token: wx.getStorageSync('token') ? wx.getStorageSync('token') : 'token'
     }, data);
 
@@ -197,7 +198,7 @@ App({
     // 构造请求参数
     let postfunc = function () {
       data = Object.assign({
-        wxapp_id: 10001,
+        wxapp_id: App.wxapp_id,
         token: wx.getStorageSync('token') ? wx.getStorageSync('token') : 'token'
       }, data);
       wx.request({
