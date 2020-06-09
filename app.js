@@ -46,6 +46,7 @@ App({
     let App = this;
     App.api_root = `${siteInfo.siteroot}api/process/`;
     App.ServerFileHost = `${siteInfo.siteroot}Files/`;
+    App.ServerNoFileHost = `${siteInfo.siteroot}content/Files/`;
   },
 
   /**

@@ -24,7 +24,7 @@
                 <image mode="aspectFill" src="{{ServerFileHost}}{{item.defaultimgurl}}"></image>
               </block>
               <block wx:else>
-                <image mode="aspectFill" src="{{ServerFileHost}}{{item.defaultimgurl}}"></image>
+                <image mode="aspectFill" src="{{ServerNoFileHost}}{{item.defaultimgurl}}"></image>
               </block>
             </view>
             <view class="content onelist-hidden">
@@ -55,7 +55,7 @@
               <image class="goodsImg" mode="scaleToFill" src="{{ServerFileHost}}{{item.defaultimgurl}}"></image>
             </block>
               <block wx:else>
-                <image class="goodsImg" mode="scaleToFill" src="{{ServerFileHost}}{{item.defaultimgurl}}"></image>
+                <image class="goodsImg" mode="scaleToFill" src="{{ServerNoFileHost}}{{item.defaultimgurl}}"></image>
               </block>
           </view>
         </view>
