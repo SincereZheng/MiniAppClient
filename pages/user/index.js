@@ -9,6 +9,7 @@ Page({
     isLogin: false,
     userInfo: {},
     orderCount: {},
+    isadmin:0
   },
 
   /**
@@ -28,7 +29,9 @@ Page({
     });
     if (_this.data.isLogin) {
       // 获取当前用户信息
+      App.checkIsAdmin(result => {this.setData({isadmin:result.data.isadmin})});
       _this.getUserDetail();
+      
     }
   },
 

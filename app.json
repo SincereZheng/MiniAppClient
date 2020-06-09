@@ -15,7 +15,9 @@
     "pages/address/create",
     "pages/address/detail",
     "pages/login/login",
-    "pages/order/trade"
+    "pages/order/trade",
+    "pages/coupon/list",
+    "pages/coupon/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

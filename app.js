@@ -326,6 +326,9 @@ App({
   checkIsLogin() {
     return wx.getStorageSync('token') ? wx.getStorageSync('token') : 'token' != '' && wx.getStorageSync('user_id') != '';
   },
+  checkIsAdmin(callback) {
+    this._get('WxUserIsAdmin', {}, callback);
+  },
 
   /**
    * 授权登录
