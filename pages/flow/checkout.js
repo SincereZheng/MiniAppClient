@@ -18,6 +18,8 @@ Page({
     hasError: false,
     error: '',
     ServerFileHost:'',
+    ucid:0,
+    order_couponindex:0
   },
 
   /**
@@ -30,8 +32,16 @@ Page({
     // 当前页面参数
     this.data.options = options;
     console.log(options);
+    this.setData({ucid:0})
   },
-
+  bindPickerChange:function(e){
+    
+    this.setData({
+      order_couponindex: e.detail.value,
+      ucid : this.data.order_coupon[e.detail.value].ucid
+    });
+    this.getOrderData();
+  },
   /**
    * 生命周期函数--监听页面显示
    */
@@ -63,6 +73,11 @@ Page({
         _this.data.error = '';
       }
       _this.setData(result.data);
+      if(_this.data.order_coupon.length>0){
+        _this.setData({
+          ucid:_this.data.order_coupon[0].ucid
+        });
+      }
     };
 
     // 立即购买
@@ -71,6 +86,7 @@ Page({
         goods_id: options.goods_id,
         goods_num: options.goods_num,
         goods_sku_id: options.goods_sku_id,
+        ucid: _this.data.ucid,
       }, function(result) {
         callback(result);
       });
@@ -169,6 +185,7 @@ Page({
         goods_id: options.goods_id,
         goods_num: options.goods_num,
         goods_sku_id: options.goods_sku_id,
+        ucid : _this.data.ucid
       }, function(result) {
         // success
         console.log('success');

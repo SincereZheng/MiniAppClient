@@ -28,6 +28,8 @@ Page({
     cart_total_num: 0, // 购物车商品总数量
     specData: {}, // 多规格信息
     ServerFileHost:'',
+    cantbuy:false,
+    cantbuystyle:''
   },
 
   // 记录规格的数组
@@ -65,16 +67,19 @@ Page({
    * 初始化商品详情数据
    */
   initGoodsDetailData(data) {
+    if(data.detail.spec.length == 0){
+      this.setData({cantbuy:true,cantbuystyle:'cantbuystyle'});
+    }
     let _this = this;
     // 富文本转码
     if (data.detail.content.length > 0) {
       wxParse.wxParse('content', 'html', data.detail.content, _this, 0);
     }
     // 商品价格/划线价/库存
-    data.goods_sku_id = data.detail.spec[0].spec_sku_id;
-    data.goods_price = data.detail.spec[0].goods_price;
-    data.line_price = data.detail.spec[0].line_price;
-    data.stock_num = data.detail.spec[0].stock_num;
+    data.goods_sku_id = data.detail.spec.length==0?0: data.detail.spec[0].spec_sku_id;
+    data.goods_price = data.detail.spec.length==0?0:data.detail.spec[0].goods_price;
+    data.line_price = data.detail.spec.length==0?0:data.detail.spec[0].line_price;
+    data.stock_num = data.detail.spec.length==0?0:data.detail.spec[0].stock_num;
     // 初始化商品多规格
     if (data.detail.spec_type == 20) {
       data.specData = _this.initManySpecData(data.specData);
@@ -217,6 +222,8 @@ Page({
   submit(e) {
     let _this = this,
       submitType = e.currentTarget.dataset.type;
+    if(_this.data.cantbuy)
+      return
     if(!App.checkIsLogin()){
       App.doLogin()
       return

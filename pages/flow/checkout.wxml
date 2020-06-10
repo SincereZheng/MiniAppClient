@@ -68,6 +68,9 @@
         <text class="col-m">￥{{order_total_price}}</text>
       </view>
     </view>
+    
+    
+  
     <view class="dis-flex flow-all-list">
       <text class="flex-five">配送费用:</text>
       <view class="flex-five t-r">
@@ -79,6 +82,15 @@
           <text class="col-7">请先选择配送地址</text>
         </view>
       </view>
+    </view>
+
+    <view class="dis-flex flow-all-list" wx:if="{{order_coupon.length > 0}}">
+      <text class="flex-five">优惠券金额:</text>
+      <picker class="picker" bindchange="bindPickerChange" value="{{index}}" range="{{order_coupon}}" range-key="{{'title'}}">
+        <view class="picker-view">
+          -￥{{order_coupon[order_couponindex].amount}}
+        </view>
+      </picker>
     </view>
   </view>
 

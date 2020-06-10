@@ -49,6 +49,8 @@ module.exports = {
                 }, {})), "img" === l.tag) {
                     l.imgIndex = n.images.length;
                     var p = getApp().ServerFileHost + l.attr.src;
+                    if(l.attr.src.indexOf(getApp().ServerFileHost)>-1 || l.attr.src.indexOf('http') == 0)
+                        p = l.attr.src;
                     p = i.urlToHttpUrl(p, s), l.attr.src = p, l.from = a, n.images.push(l), n.imageUrls.push(p);
                 }
                 if ("font" === l.tag) {
@@ -63,7 +65,7 @@ module.exports = {
                         l.attr.style.push(f[h]), l.attr.style.push(g), l.styleStr += f[h] + ": " + g + ";";
                     }
                 }
-                if ("source" === l.tag && (n.source = getApp().ServerFileHost + l.attr.src), r) {
+                if ("source" === l.tag && (n.source = l.attr.src.indexOf(getApp().ServerFileHost) > -1 || l.attr.src.indexOf('http') == 0 ? l.attr.src : getApp().ServerFileHost + l.attr.src), r) {
                     var v = o[0] || n;
                     void 0 === v.nodes && (v.nodes = []), v.nodes.push(l);
                 } else o.unshift(l);

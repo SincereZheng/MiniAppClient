@@ -16,3 +16,11 @@
 .flow-header-left {
   padding-left: 90rpx;
 }
+.picker-view{
+  text-align: right;
+  color: #2ba245 !important;
+}
+.picker{
+  flex: 0 0 50%;
+  padding: 0;
+}

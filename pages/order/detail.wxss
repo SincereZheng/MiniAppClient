@@ -138,3 +138,6 @@
 .chackout-left-detail {
   line-height: 44px;
 }
+.coupon-price{
+  color: #2ba245 !important;
+}

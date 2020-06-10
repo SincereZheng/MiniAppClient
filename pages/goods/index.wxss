@@ -20,6 +20,9 @@
   padding: 0 0rpx 0 0;
   color: #333;
 }
+.cantbuystyle{
+  background-color: gray !important;
+}
 
 .money-box {
   margin-top: 10rpx;

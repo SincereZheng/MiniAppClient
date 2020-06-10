@@ -16,7 +16,7 @@ Page({
     wx.hideShareMenu();
     this.setData({options: options});
   },
-
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -71,11 +71,16 @@ Page({
   onReachBottom: function () {
 
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  getCoupon:function(e){
+    if(this.data.options.type=="me")
+      return;
+    wx.navigateTo({
+      url: '/pages/coupon/get?type=share&cid='+ e.currentTarget.dataset.cid
+    })
+  },
+  goget:function(){
+    wx.navigateTo({
+      url: '/pages/coupon/get?type=me&random=1591759667291&cid=5'
+    })
   }
 })

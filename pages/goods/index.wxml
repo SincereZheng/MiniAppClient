@@ -125,8 +125,8 @@
           <text class="">{{cart_total_num}}</text>
         </view>
       </view>
-      <view bindtap="submit" class="order-number" data-type="addCart">加入购物车</view>
-      <view bindtap="submit" class="order-bt" data-type="buyNow"> 立即购买</view>
+      <view bindtap="submit" class="order-number {{cantbuystyle}}" data-type="addCart">加入购物车</view>
+      <view bindtap="submit" class="order-bt {{cantbuystyle}}" data-type="buyNow"> 立即购买</view>
     </view>
   </view>
 </scroll-view>
