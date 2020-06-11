@@ -203,7 +203,7 @@ Page({
 
     // 创建订单-购物车结算
     else if (options.order_type === 'cart') {
-      App._post_form('SubmitOrderCart', {}, function(result) {
+      App._post_form('SubmitOrderCart', {ucid : _this.data.ucid}, function(result) {
         // success
         console.log('success');
         callback(result);
