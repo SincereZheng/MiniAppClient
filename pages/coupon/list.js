@@ -15,6 +15,10 @@ Page({
   onLoad: function (options) {
     wx.hideShareMenu();
     this.setData({options: options});
+    var title = options.type=="me"?"我的优惠券":"优惠券分享"
+    wx.setNavigationBarTitle({
+      title: title,
+    })
   },
   
   /**

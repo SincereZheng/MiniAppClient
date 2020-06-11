@@ -92,7 +92,7 @@
         <text class="flex-five col-7">配送费用:</text>
         <text class="flex-five col-m t-r">￥{{order.express_price}}</text>
       </view>
-      <view class="dis-flex flow-all-list-cont">
+      <view class="dis-flex flow-all-list-cont" wx:if="{{order.coupon_price != 0}}">
         <text class="flex-five col-7">优惠金额:</text>
         <text class="flex-five col-m t-r coupon-price">-￥{{order.coupon_price}}</text>
       </view>

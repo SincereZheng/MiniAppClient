@@ -94,7 +94,7 @@ Page({
 
     // 购物车结算
     else if (options.order_type === 'cart') {
-      App._get('OrderCart', {}, function(result) {
+      App._get('OrderCart', {ucid: _this.data.ucid}, function(result) {
         callback(result);
       });
     }
