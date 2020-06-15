@@ -99,10 +99,6 @@
   content: "\e655";
 }
 
-.icon-address:before {
-  content: "\e6db";
-}
-
 .icon-callingrobort:before {
   content: "\e6de";
 }
