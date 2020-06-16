@@ -141,3 +141,11 @@
 .coupon-price{
   color: #2ba245 !important;
 }
+.comment{
+  float: right;
+  border: 1rpx solid #fd4a5f;
+  border-radius: 15rpx;
+  padding: 6rpx 20rpx;
+  font-size: 28rpx;
+  color: #fd4a5f;
+}

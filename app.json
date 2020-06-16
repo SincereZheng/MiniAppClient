@@ -18,7 +18,8 @@
     "pages/order/trade",
     "pages/coupon/list",
     "pages/coupon/index",
-    "pages/coupon/get"
+    "pages/coupon/get",
+    "pages/order/comment"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

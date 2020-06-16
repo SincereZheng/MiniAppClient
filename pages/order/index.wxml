@@ -5,6 +5,7 @@
       <view bindtap="bindHeaderTap" class="{{dataType==='payment'?'active':''}}" data-type="payment">待付款</view>
        <view bindtap="bindHeaderTap" class="{{dataType==='delivery'?'active':''}}" data-type="delivery">待发货</view>
       <view bindtap="bindHeaderTap" class="{{dataType==='received'?'active':''}}" data-type="received">待收货</view>
+      <view bindtap="bindHeaderTap" class="{{dataType==='comment'?'active':''}}" data-type="comment">待评价</view>
     </view>
     <scroll-view scroll-y="{{true}}">
       <view class="wrapper">
@@ -68,6 +69,9 @@
                     </view>
                     <view class="flex-box" wx:if="{{item.delivery_status==20 && item.receipt_status == 10}}">
                       <view bindtap="receipt" class="btn-main" data-id="{{item.order_id}}">确认收货</view>
+                    </view>
+                    <view class="flex-box" wx:if="{{item.receipt_status==20}}">
+                      <view bindtap="detail" class="btn-main" data-id="{{item.order_id}}">评价</view>
                     </view>
                   </view>
                 </view>

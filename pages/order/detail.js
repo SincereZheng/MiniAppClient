@@ -16,10 +16,13 @@ Page({
    */
   onLoad: function (options) {
     this.data.order_id = options.order_id;
-    this.getOrderDetail(options.order_id);
+    
     this.setData({
       ServerFileHost:App.ServerFileHost
     })
+  },
+  onShow:function(){
+    this.getOrderDetail(this.data.order_id);
   },
 
   /**
@@ -117,6 +120,12 @@ Page({
       }
     });
   },
-
+  comment:function(e){
+    var orderdetailid=e.currentTarget.dataset.orderdetailid;
+    var skuid=e.currentTarget.dataset.skuid;
+    wx.navigateTo({
+      url: 'comment?skuid=' + skuid + '&orderdetailid=' +orderdetailid
+    });
+  }
 
 });

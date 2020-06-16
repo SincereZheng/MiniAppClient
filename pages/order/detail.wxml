@@ -66,7 +66,8 @@
             
             <view class="flow-list-cont">
               <text class="flow-cont">￥{{item.goods_price}}</text>
-              <text class="small">×{{item.total_num}}</text>
+              <text>×{{item.total_num}}</text>
+              <text class="comment" catchtap="comment" data-orderdetailid="{{item.orderdetailid}}" data-skuid="{{item.sku_id}}">评价</text>
             </view>
           </view>
         </view>
@@ -77,6 +78,7 @@
           <text class="flow-money">{{status.total}}</text>
         </view>
       </view>
+      
 
     </block>
     <!-- 订单金额 -->
