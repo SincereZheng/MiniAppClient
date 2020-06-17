@@ -29,7 +29,9 @@ Page({
     specData: {}, // 多规格信息
     ServerFileHost:'',
     cantbuy:false,
-    cantbuystyle:''
+    cantbuystyle:'',
+    type:'abstract',
+    ServerNoFileHost:'',
   },
 
   // 记录规格的数组
@@ -40,7 +42,8 @@ Page({
    */
   onLoad(options) {
     this.setData({
-      ServerFileHost:App.ServerFileHost
+      ServerFileHost:App.ServerFileHost,
+      ServerNoFileHost:App.ServerNoFileHost
     })
     let _this = this;
     // 商品id
@@ -263,5 +266,23 @@ Page({
       path: "/pages/goods/index?goods_id=" + _this.data.goods_id
     };
   },
-
+  listenerButtonPreviewImage: function (e) {
+    let index = e.target.dataset.index;
+    let cindex = e.target.dataset.cindex;
+    let that = this;
+    var cururl = that.data.ServerFileHost + that.data.comment[cindex].imgurl[index];
+    var urls = [];
+    that.data.comment[cindex].imgurl.forEach(function(item,index){
+      urls.push(that.data.ServerFileHost + item);
+    })
+    wx.previewImage({
+      current: cururl,
+      urls: urls
+    })
+  },
+  toComment:function(){
+    wx.navigateTo({
+      url: 'comment?goodsid='+this.data.goods_id,
+    })
+  }
 })

@@ -14,7 +14,8 @@ Page({
     ServerNoFileHost:'',
     inputtext:'',
     skuid:0,
-    orderdetailid:0
+    orderdetailid:0,
+    type:''
   },
   inputs: function (e) {
     // 获取输入框的内容
@@ -49,8 +50,18 @@ Page({
       ServerFileHost:App.ServerFileHost,
       ServerNoFileHost:App.ServerNoFileHost,
       skuid:options.skuid,
-      orderdetailid:options.orderdetailid
+      orderdetailid:options.orderdetailid,
+      type:options.type
     })
+    wx.setNavigationBarTitle({
+      title: options.goodsname,
+    })
+    var _this=this;
+    if(options.type == "view"){
+      App._get('GetUserOrderGoodsComment', { orderdetailid:options.orderdetailid }, function (result) {
+        _this.setData(result.data);
+      });
+    }
   },
 
   /**
@@ -126,30 +137,30 @@ Page({
         var count = 0;
         for (var i = 0, h = tempFilePaths.length; i < h; i++) {
           //上传文件
-          // wx.uploadFile({
-          //     url: App.api_root + 'UploadFile',
-          //     filePath: tempFilePaths[i],
-          //     name: 'uploadfile_ant',
-          //     header: {
-          //       "Content-Type": "multipart/form-data"
-          //     },
-          //     success: function (res) {
-          //       count++;
-          //       //如果是最后一张,则隐藏等待中  
-          //       if (count == tempFilePaths.length) {
-          //         wx.hideToast();
-          //       }
-          //     },
-          //     fail: function (res) {
-          //       wx.hideToast();
-          //       wx.showModal({
-          //         title: '错误提示',
-          //         content: '上传图片失败',
-          //         showCancel: false,
-          //         success: function (res) { }
-          //       })
-          //     }
-          // });
+          wx.uploadFile({
+              url: App.api_root + 'UploadFile',
+              filePath: tempFilePaths[i],
+              name: 'uploadfile_ant',
+              header: {
+                "Content-Type": "multipart/form-data"
+              },
+              success: function (res) {
+                count++;
+                //如果是最后一张,则隐藏等待中  
+                if (count == tempFilePaths.length) {
+                  wx.hideToast();
+                }
+              },
+              fail: function (res) {
+                wx.hideToast();
+                wx.showModal({
+                  title: '错误提示',
+                  content: '上传图片失败',
+                  showCancel: false,
+                  success: function (res) { }
+                })
+              }
+          });
         }
 
       }
@@ -236,6 +247,11 @@ Page({
     App._post_form('AddComment', { comment:data.inputtext,orderdetailid:data.orderdetailid,skuid:data.skuid,star:data.flag,filePath:data.tempFilePaths }, function (result) {
       wx.showToast({
         title: '提交成功',
+        success:function(res){
+          setTimeout(() => {
+            wx.navigateBack();
+          }, 1500);
+        }
       })
     });
   }

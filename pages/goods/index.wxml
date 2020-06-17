@@ -61,26 +61,32 @@
     </view>
 
     <!-- 商品评论 -->
-    <block wx:if="{{goodsComment}}">
+    <block wx:if="{{comment}}">
       <view class="cont-box b-f goods-property-box m-top20">
         <text class="col-3 f-30">评价</text>
-        <text bindtap="toChild" class="comment-num">查看更多</text>
+        <text bindtap="toComment" class="comment-num">查看更多</text>
         <view class="goods-property-jianTou">
           <text class="iconfont icon-xiangyoujiantou user-orderJtou" style="margin-top:0;"></text>
         </view>
       </view>
       <view class="goods_comment_box b-f">
-        <view class="cont-box goods-comment-box b-t b-f b-b" wx:for="{{goodsComment}}" wx:key="goodsComment">
-          <text class="admin">{{item.name}}</text>
+        <view class="cont-box goods-comment-box b-t b-f b-b" wx:for="{{comment}}" wx:key="goodsComment" wx:for-index="cindex">
+          <text class="admin">{{item.nickname}}</text>
+          <text class="admin sku">{{item.skuname}}</text>
           <view class="com_xing">
-            <text class="iconfont icon-shoucang1 {{item.comment_rank>0?'active ':''}}"></text>
-            <text class="iconfont icon-shoucang1 {{item.comment_rank>1?'active ':''}}"></text>
-            <text class="iconfont icon-shoucang1 {{item.comment_rank>2?'active ':''}}"></text>
-            <text class="iconfont icon-shoucang1 {{item.comment_rank>3?'active ':''}}"></text>
-            <text class="iconfont icon-shoucang1 {{item.comment_rank>4?'active ':''}}"></text>
+            <view class="stars" style="background:url('{{ServerNoFileHost}}{{item.stars>=1? 'staron': 'staroff'}}.png') no-repeat"></view>
+            <view class="stars" style="background:url('{{ServerNoFileHost}}{{item.stars>=2? 'staron': 'staroff'}}.png') no-repeat"></view>
+            <view class="stars" style="background:url('{{ServerNoFileHost}}{{item.stars>=3? 'staron': 'staroff'}}.png') no-repeat"></view>
+            <view class="stars" style="background:url('{{ServerNoFileHost}}{{item.stars>=4? 'staron': 'staroff'}}.png') no-repeat"></view>
+            <view class="stars" style="background:url('{{ServerNoFileHost}}{{item.stars>=5? 'staron': 'staroff'}}.png') no-repeat"></view>
           </view>
-          <view class="goods-comment-cont m-top20">{{item.cont}}</view>
-          <view class="f-22 col-9 m-top10">{{item.time}}</view>
+          <view class="goods-comment-cont m-top20">{{item.comment}}</view>
+          <view class="img_box">
+            <view class="imgs" wx:for="{{item.imgurl}}" wx:for-item="img">
+              <image src='{{ServerFileHost}}{{img}}' bindtap="listenerButtonPreviewImage" data-cindex="{{cindex}}" data-index="{{index}}" mode='widthFix' />
+            </view>
+          </view>
+          <view class="f-22 col-9 m-top10">{{item.createtime}}</view>
         </view>
       </view>
     </block>
@@ -89,7 +95,7 @@
     <view class="p-bottom">
       <view class="top-nav m-top20 b-f b-b">
         <view class="top-nav-bar">
-          <view bindtap="toOrder" id="top-nav-bar-true">
+          <view bindtap="toOrder" id="top-nav-bar-true" class="tab-bar {{type=='abstract'?'active':''}}">
             <span>商品描述</span>
           </view>
         </view>

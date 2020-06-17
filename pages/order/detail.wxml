@@ -67,7 +67,8 @@
             <view class="flow-list-cont">
               <text class="flow-cont">￥{{item.goods_price}}</text>
               <text>×{{item.total_num}}</text>
-              <text class="comment" catchtap="comment" data-orderdetailid="{{item.orderdetailid}}" data-skuid="{{item.sku_id}}">评价</text>
+              <text wx:if="{{item.commentstatus==10}}" class="comment" catchtap="comment" data-orderdetailid="{{item.orderdetailid}}" data-skuid="{{item.sku_id}}" data-goodsname="{{item.goods_name}}" data-type="add">评价</text>
+              <text wx:if="{{item.commentstatus==20}}" class="comment" catchtap="comment" data-orderdetailid="{{item.orderdetailid}}" data-skuid="{{item.sku_id}}" data-goodsname="{{item.goods_name}}" data-type="view">查看评价</text>
             </view>
           </view>
         </view>

@@ -99,7 +99,7 @@ Page({
 
     // 显示loading
     wx.showLoading({ title: '正在处理...', });
-    App._post_form('PayOrder', { order_id }, function (result) {
+    App._post_form('PayOrder', { order_id:order_id }, function (result) {
       if (result.RetCode === -10) {
         App.showError(result.RetMsg);
         return false;

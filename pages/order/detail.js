@@ -123,8 +123,10 @@ Page({
   comment:function(e){
     var orderdetailid=e.currentTarget.dataset.orderdetailid;
     var skuid=e.currentTarget.dataset.skuid;
+    var goodsname = e.currentTarget.dataset.goodsname;
+    var type = e.currentTarget.dataset.type;
     wx.navigateTo({
-      url: 'comment?skuid=' + skuid + '&orderdetailid=' +orderdetailid
+      url: 'comment?skuid=' + skuid + '&orderdetailid=' +orderdetailid+'&goodsname='+goodsname+'&type='+type
     });
   }
 

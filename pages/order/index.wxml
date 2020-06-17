@@ -70,8 +70,11 @@
                     <view class="flex-box" wx:if="{{item.delivery_status==20 && item.receipt_status == 10}}">
                       <view bindtap="receipt" class="btn-main" data-id="{{item.order_id}}">确认收货</view>
                     </view>
-                    <view class="flex-box" wx:if="{{item.receipt_status==20}}">
+                    <view class="flex-box" wx:if="{{item.comment_status==10}}">
                       <view bindtap="detail" class="btn-main" data-id="{{item.order_id}}">评价</view>
+                    </view>
+                     <view class="flex-box" wx:if="{{item.comment_status==20}}">
+                      <view bindtap="detail" class="btn-main" data-id="{{item.order_id}}">查看评价</view>
                     </view>
                   </view>
                 </view>
