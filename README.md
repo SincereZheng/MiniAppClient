@@ -3,6 +3,8 @@
 [地址](https://www.chengyi.xyz/miniapp/)
 服务器带宽比较低，比较卡
 
+账号：master，无密码
+
 #### 小程序调试
 下载fiddler，模拟调试
 - https://note.youdao.com/web/#/file/WEBa026a244c4e37bb29a91202f53386c99/note/WEBbfd17a8ff73355bcb87862ffd3faece0/
