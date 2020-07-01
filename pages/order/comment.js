@@ -10,6 +10,7 @@ Page({
     min: 5,//最少字数
     max: 200, //最多字数 (根据自己需求改变)
     tempFilePaths: [],
+    imgurl:[],//'../Files/20202124235423.jpg'
     ServerFileHost:'',
     ServerNoFileHost:'',
     inputtext:'',
@@ -59,6 +60,13 @@ Page({
     var _this=this;
     if(options.type == "view"){
       App._get('GetUserOrderGoodsComment', { orderdetailid:options.orderdetailid }, function (result) {
+        if(result.data && result.data.tempFilePaths && result.data.tempFilePaths.length > 0){
+          var urls=[];
+          result.data.tempFilePaths.forEach(function(url,item){
+            urls.push(App.ServerFileHost + url);
+          })
+          result.data.tempFilePaths = urls;
+        }
         _this.setData(result.data);
       });
     }
@@ -128,13 +136,15 @@ Page({
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         let tempFilePaths = res.tempFilePaths;
 
-        that.setData({
-          tempFilePaths: tempFilePaths
-        })
+        // that.setData({
+        //   tempFilePaths: tempFilePaths
+        // })
         /**
          * 上传完成后把文件上传到服务器
          */
         var count = 0;
+        var path = [];
+        var urls = [];
         for (var i = 0, h = tempFilePaths.length; i < h; i++) {
           //上传文件
           wx.uploadFile({
@@ -146,8 +156,14 @@ Page({
               },
               success: function (res) {
                 count++;
+                urls.push(JSON.parse(JSON.parse(res.data).RetJson)[0])
+                path.push(App.ServerFileHost + JSON.parse(JSON.parse(res.data).RetJson)[0])
                 //如果是最后一张,则隐藏等待中  
                 if (count == tempFilePaths.length) {
+                  that.setData({
+                    tempFilePaths: path,
+                    imgurl:urls
+                  })
                   wx.hideToast();
                 }
               },
@@ -244,15 +260,24 @@ Page({
 
   bindSubmit:function(){
     var data = this.data;
-    App._post_form('AddComment', { comment:data.inputtext,orderdetailid:data.orderdetailid,skuid:data.skuid,star:data.flag,filePath:data.tempFilePaths }, function (result) {
-      wx.showToast({
-        title: '提交成功',
-        success:function(res){
-          setTimeout(() => {
-            wx.navigateBack();
-          }, 1500);
+    if(data.inputtext == null || data.inputtext == "")
+      return;
+    if(data.flag == 0)
+      return;
+    App._post_form('AddComment', { comment:data.inputtext,orderdetailid:data.orderdetailid,skuid:data.skuid,star:data.flag,filePath:data.imgurl }, 
+      function (result) {
+        if(result.code == -500){
+          App.showError(result.msg)
+          return
         }
-      })
+        wx.showToast({
+          title: '提交成功',
+          success:function(res){
+            setTimeout(() => {
+              wx.navigateBack();
+            }, 1500);
+          }
+        })
     });
   }
 })

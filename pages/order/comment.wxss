@@ -77,7 +77,11 @@
 .btnSf{
   width: 92%;
   margin:30rpx auto;
-  
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
 }
 .btnSf button{
     background: #57B6BA;
@@ -112,4 +116,7 @@
   width: 92%;
   margin:0 auto;
   border:1px solid #ddd;
+}
+.c-hide{
+  display: none;
 }

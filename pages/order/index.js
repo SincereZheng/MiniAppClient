@@ -102,6 +102,7 @@ Page({
     App._post_form('PayOrder', { order_id:order_id }, function (result) {
       if (result.RetCode === -10) {
         App.showError(result.RetMsg);
+        _this.getOrderList(_this.data.dataType);
         return false;
       }
       // 发起微信支付

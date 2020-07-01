@@ -15,11 +15,11 @@
     <text wx:if="{{type=='add'}}" class="currentWordNumber">{{currentWordNumber|0}}/{{max}}</text>
 </view>
 <!--隐藏上传图片功能，开发者工具会牵涉到ssl证书问题-->
-<view class="img_box" style="display:none">
+<view class="img_box">
   <view class="imgs" wx:for="{{tempFilePaths}}" wx:key="index">
     <image src='{{item}}' bindlongpress="deleteImage" bindtap="listenerButtonPreviewImage" data-index="{{index}}" mode='widthFix' />
   </view>
-  <view class="imgs">
+  <view class="imgs {{showupload}}">
     <view class="images" bindtap="upload">
       <image src='{{ServerNoFileHost}}upload.png'  />
     </view>
