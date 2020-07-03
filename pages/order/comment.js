@@ -12,7 +12,7 @@ Page({
     tempFilePaths: [],
     imgurl:[],//'../Files/20202124235423.jpg'
     ServerFileHost:'',
-    ServerNoFileHost:'',
+    ServerNoFileHost:App.ServerNoFileHost,
     inputtext:'',
     skuid:0,
     orderdetailid:0,
@@ -59,6 +59,7 @@ Page({
     })
     var _this=this;
     if(options.type == "view"){
+      _this.setData({showupload:"c-hide"});
       App._get('GetUserOrderGoodsComment', { orderdetailid:options.orderdetailid }, function (result) {
         if(result.data && result.data.tempFilePaths && result.data.tempFilePaths.length > 0){
           var urls=[];
