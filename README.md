@@ -13,7 +13,7 @@
 
 ### .net服务端
 
-[https://gitee.com/nosincere/MiniAppServer](https://gitee.com/nosincere/MiniAppServer)
+[链接地址](https://gitee.com/nosincere/miniappserver_open_source)
 
 
 ### 2020年7月1日16:21:23
